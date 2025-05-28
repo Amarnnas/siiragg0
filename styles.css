@@ -1,0 +1,32 @@
+
+/* Custom styles for better Arabic font display if needed */
+body {
+    font-family: 'Inter', 'Tajawal', sans-serif; /* Tajawal is a good Arabic font, Inter is a fallback */
+    background-color: #c2e5f2; /* Lightest Blue from palette */
+}
+.filter-btn.active {
+    background-color: #048abf; /* Darkest Blue */
+    color: white;
+}
+.dhikr-card {
+    border-right: 5px solid #30a9d9; /* Medium Blue */
+}
+/* Ensure buttons are large enough for easy tapping */
+.counter-btn, .filter-btn {
+    padding: 0.75rem 1.5rem; /* py-3 px-6 */
+    font-size: 1.125rem; /* text-lg */
+    border-radius: 0.5rem; /* rounded-lg */
+}
+.counter-btn-completed {
+    background-color: #22C55E !important; /* green-500 (Keeping green for completed, for now) */
+    color: white !important;
+    cursor: default !important;
+}
+
+/* New color theme */
+.header-bg { background-color: #048abf; } /* Darkest Blue */
+.primary-btn-bg { background-color: #30a9d9; } /* Medium Blue */
+.primary-btn-hover-bg { background-color: #048abf; } /* Darkest Blue on hover */
+.primary-text-color { color: #048abf; } /* Darkest Blue for text */
+.secondary-text-color { color: #30a9d9; } /* Medium Blue for text accents */
+.focus-ring-color { ring-color: #30a9d9; }
