@@ -82,25 +82,30 @@ function handleFilterClick(event) {
     renderAdhkar(category);
 }
 
-function handleCounterClick(event) {
+async function handleCounterClick(event) {
     const dhikrId = event.target.getAttribute('data-id');
     let countRead = currentProgress[dhikrId] || 0;
 
-    const dhikr = adhkarData.find(d => d.id === dhikrId);
+    try {
+        const adhkarData = await fetchAdhkar();
+        const dhikr = adhkarData.adhkar.find(d => d.id === dhikrId);
 
-    if (!dhikr || countRead >= (dhikr.count_total || 1)) {
-        return; // Already completed or dhikr not found
-    }
+        if (!dhikr || countRead >= (dhikr.count_total || 1)) {
+            return; // Already completed or dhikr not found
+        }
 
-    countRead++;
-    currentProgress[dhikrId] = countRead;
-    saveProgress(currentProgress);
+        countRead++;
+        currentProgress[dhikrId] = countRead;
+        saveProgress(currentProgress);
 
-    event.target.textContent = `تمت القراءة: ${countRead} / ${dhikr.count_total || 1}`;
-    if (countRead >= (dhikr.count_total || 1)) {
-        event.target.classList.add('counter-btn-completed');
-        event.target.textContent = 'أكملت الذكر ✅';
-        event.target.disabled = true;
+        event.target.textContent = `تمت القراءة: ${countRead} / ${dhikr.count_total || 1}`;
+        if (countRead >= (dhikr.count_total || 1)) {
+            event.target.classList.add('counter-btn-completed');
+            event.target.textContent = 'أكملت الذكر ✅';
+            event.target.disabled = true;
+        }
+    } catch (error) {
+        console.error('Error updating counter:', error);
     }
 }
 
