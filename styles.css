@@ -1,5 +1,4 @@
-
-/* Custom styles for better Arabic font display if needed */
+/* Custom styles for better Arabic font display if needed */   
 body {
     font-family: 'Inter', 'Tajawal', sans-serif; /* Tajawal is a good Arabic font, Inter is a fallback */
     background-color: #c2e5f2; /* Lightest Blue from palette */
